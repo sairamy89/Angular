@@ -1,0 +1,32 @@
+export class Consumer {
+  consumer_number: string;
+  consumer_name: string;
+  date_of_connection: string;
+  consumer_type: string;
+  pd_td_date: Date;
+  connected_load_kw: string;
+  contract_demand_kva: string;
+  tariff_category: string;
+  part_no: string;
+  activity_desc: string;
+  seasonal_consumer_tag: string;
+  security_deposit_held: string;
+  bg_lc_amount: string;
+  tan_no: string;
+  gstin: string;
+  make_name: string;
+  serial_number: string;
+  express_feeder_flag: string;
+  substation_number: string;
+  feeder_number: string;
+  bill_to_addr_l1: string;
+  bill_to_addr_l2: string;
+  bill_to_addr_l3: string;
+  bill_pin_code: string;
+  meter_address_L1: string;
+  meter_address_L2: string;
+  meter_address_L3: string;
+  meter_pin_code: string;
+  mob_conn_com: string;
+  bill_due_data: Date;
+}

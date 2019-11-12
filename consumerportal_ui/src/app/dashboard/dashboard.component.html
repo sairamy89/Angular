@@ -1,0 +1,147 @@
+<div class="dashboard">
+  <app-header></app-header>
+	<!-- <div class="connection_otr">
+		<div class="wrapper">
+			<div class="connection_inr">
+				<div class="connection_inr_title">
+					<h3>Add Connection</h3>
+				</div>
+				<div class="connection_form">
+					<div class="connection_field consumer_connection">
+						<div class="input-field">
+						    <select>
+						      <option value="htc_consumer" selected>HT Consumer 1</option>
+						      <option value="htc_consumer">HT Consumer 2</option>
+						      <option value="htc_consumer">HT Consumer 3</option>
+						    </select>
+						    <label>Consumer Type</label>
+						</div>
+					</div>
+					<div class="connection_field consumer_connection">
+						<div class="input-field">
+						    <select>
+						      <option value="000099040930" selected>000099040930</option>
+						      <option value="000099040930">000099040930</option>
+						      <option value="000099040930">000099040930</option>
+						    </select>
+						    <label>Consumer Number</label>
+						</div>
+					</div>
+					<div class="connection_field consumer_connection">
+						<div class="input-field">
+						    <select>
+						      <option value="0019 Vasai Rd. Urban S/DN" selected>0019 Vasai Rd. Urban S/DN </option>
+						      <option value="0019 Vasai Rd. Urban S/DN">0019 Vasai Rd. Urban S/DN </option>
+						      <option value="0019 Vasai Rd. Urban S/DN">0019 Vasai Rd. Urban S/DN </option>
+						    </select>
+						    <label>BU</label>
+						</div>
+					</div>
+					<div class="connection_form_submit">
+						<button type="submit">ADD</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	 -->
+	<div class="my_connections">
+		<div class="wrapper">
+			<div class="my_connections_inr">
+				<div class="my_connections_inr_title">
+					<h2>My Connections</h2>
+				</div>
+				<div class="my_connections_detail" *ngFor="let consumer of consumerData">
+					<div class="my_connections_detail_box my_connections_detail_consumer_no">
+						<small>Consumer No.</small>
+						<p>{{consumer.consumer_number}}</p>
+            <!--<p>000099040930</p>-->
+					</div>
+					<div class="my_connections_detail_box my_connections_detail_consumer_no">
+						<small>BU / Circle Code</small>
+						<p>{{consumer.bu}}/{{consumer.circle_code}}</p>
+            <!--<p>565   Washi Circle</p>-->
+					</div>
+					<div class="my_connections_detail_box my_connections_detail_consumer_no">
+						<small>Bill Month</small>
+						<!--<p>Jan 2019</p>-->
+            <p>{{consumer.bill_month | date: "MMM"}} {{consumer.bill_year}} </p>
+					</div>
+					<div class="my_connections_detail_box my_connections_detail_consumer_no">
+						<small>Consumption</small>
+						<!--<p>78,395</p>-->
+            <p>{{consumer.unit_consumed}}</p>
+					</div>
+					<div class="my_connections_detail_box my_connections_detail_consumer_no">
+						<small>Amount</small>
+						<p>{{consumer.bill_amount | number}}</p>
+            <!--<p>1,302,430</p>-->
+					</div>
+					<div class="my_connections_detail_box my_connections_detail_consumer_no">
+						<small>Due Date</small>
+						<p>{{consumer.bill_due_date | date: "dd-MMM-yyyy"}}</p>
+            <!--<p>17 Jul 2019</p>-->
+					</div>
+				</div>
+				<div class="my_connections_box_otr clearfix">
+					<div class="my_connections_box_inr">
+						<div class="my_connections_box">
+							<div class="my_connections_box_img">
+								<img src="..//../assets/images/consumer_profile.svg" alt="">
+							</div>
+							<div class="my_connections_box_text">
+								<h3>Consumer Profile</h3>
+								<p>View your profile</p>
+							</div>
+							<div class="a_btn">
+									<a routerLink="/consumerprofile">View</a>
+								</div>
+						</div>
+					</div>
+					<div class="my_connections_box_inr">
+						<div class="my_connections_box">
+							<div class="my_connections_box_img">
+								<img src="..//../assets/images/ht_load_profile.svg" alt="">
+							</div>
+							<div class="my_connections_box_text">
+								<h3>HT Reading Details</h3>
+								<p>View your consumption statistics</p>
+							</div>
+							<div class="a_btn">
+								<a routerLink="/readingDetails">View</a>
+							</div>
+						</div>
+					</div>
+					<div class="my_connections_box_inr">
+						<div class="my_connections_box">
+							<div class="my_connections_box_img">
+								<img src="..//../assets/images/view_pay_bill.svg" alt="">
+							</div>
+							<div class="my_connections_box_text">
+								<h3>View/Pay Bill</h3>
+								<p>View and Pay your bills</p>
+							</div>
+							<div class="a_btn">
+								<a routerLink="/view-pay">View</a>
+							</div>
+						</div>
+					</div>
+					<div class="my_connections_box_inr">
+						<div class="my_connections_box">
+							<div class="my_connections_box_img">
+								<img src="..//../assets/images/payment_history.svg" alt="">
+							</div>
+							<div class="my_connections_box_text">
+								<h3>Payment History</h3>
+								<p>View history of your payments</p>
+							</div>
+							<div class="a_btn">
+								<a routerLink="/paymentHistory">View</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <app-footer></app-footer>
+</div>

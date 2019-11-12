@@ -1,0 +1,203 @@
+<div class="dashboard ht_reading_details_main">
+	<app-header></app-header>
+	<div class="dashboard_bill">
+		<div class="wrapper">
+			<div class="dashboard_chart">
+				<div class="dashboard_chart_tabing_top">
+					<ul id="tabs-swipe-demo" class="tabs">
+					    <li class="tab col s3"><a class="active" href="#test-swipe-1">Energy Graph</a></li>
+					    <li class="tab col s3"><a href="#test-swipe-2">Demand Graph</a></li>
+					    <li class="tab col s3"><a href="#test-swipe-3">HT Reading History</a></li>
+					</ul>
+				</div>
+				<div class="dashboard_chart_tabing_detail">
+				    <div id="test-swipe-1" class="chart_energy">
+				    	<div class="dashboard_chart_energy">
+				    		<h2>Energy</h2>
+							  <canvas id="energy-chart" style="width:105%; height:480px;"></canvas>
+				    	</div>
+				    	<!--<div class="dashboard_chart_select">
+			    			<ul>
+			    			    <li class="kwh">
+			    			    	<label>
+	        							<input type="checkbox" class="filled-in" checked="checked" />
+	        							<span>KWH</span>
+	      							</label>
+	      						</li>
+			    			    <li class="kvah">
+			    			    	<label>
+	        							<input type="checkbox" class="filled-in" checked="checked" />
+	        							<span>KVAH</span>
+	      							</label>
+			    			    </li>
+			    			    <li class="kvah_lead">
+			    			    	<label>
+	        							<input type="checkbox" class="filled-in" checked="checked" />
+	        							<span>KVAH Lead</span>
+	      							</label>
+			    			    </li>
+			    			    <li class="rkvah_lag">
+			    			    	<label>
+	        							<input type="checkbox" class="filled-in" checked="checked" />
+	        							<span>RKVAH LAG</span>
+	      							</label>
+			    			    </li>
+			    			</ul>
+				    	</div>-->
+				    </div>
+					<div id="test-swipe-2" class="chart_demand">
+						<div class="dashboard_chart_demand">
+							<h2>Demand</h2>
+							<canvas id="demand-chart" style="width:105%; height:480px;"></canvas>
+						</div>
+						<!--<div class="dashboard_chart_select">
+			    			<ul>
+			    			    <li class="kw">
+			    			    	<label>
+	        							<input type="checkbox" class="filled-in" checked="checked" />
+	        							<span>KW</span>
+	      							</label>
+	      						</li>
+			    			    <li class="kva">
+			    			    	<label>
+	        							<input type="checkbox" class="filled-in" checked="checked" />
+	        							<span>KVA</span>
+	      							</label>
+			    			    </li>
+			    			</ul>
+				    </div>-->
+					</div>
+					<div id="test-swipe-3" class="chart_ht_reading">
+						<div class="dashboard_tabel">
+              <div class="dashboard_chart_ht_reading_table">
+                  <table class="responsive-table highlight">
+                      <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>KW</th>
+                            <th>KWH</th>
+                            <th>KVA</th>
+                            <th>KVAH</th>
+                            <th>RKVAH Lag</th>
+                            <th>RKVAH Lead</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                        <tr>
+                            <td>01 - JUL - 2019 12:00:00 AM</td>
+                            <td>46.720</td>
+                            <td>86222.500</td>
+                            <td>46.820</td>
+                            <td>86478.500</td>
+                            <td>6620.000</td>
+                            <td>5670.000</td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+			      </div>
+					</div>
+				</div>
+		</div>
+	</div>
+	<app-footer></app-footer>
+</div>

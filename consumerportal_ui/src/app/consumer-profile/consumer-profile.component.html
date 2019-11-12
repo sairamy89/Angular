@@ -1,0 +1,115 @@
+<div class="dashboard">
+  <app-header></app-header>
+	<div class="consumer_info">
+		<div class="wrapper">
+			<div class="consumer_info_otr clearfix">
+				<div class="consumer_info_left">
+					<div class="consumer_info_left_bg">
+						<div class="consumer_info_profile">
+							<!--><img src="" alt="">-->
+              <ngx-avatar src="..//../assets/images/consumer_info_profile1.png" initialsSize="2" size="100" [name]="consumer_name"></ngx-avatar>
+						</div>
+						<div class="consumer_info_profile_name">
+							<!--<h2>Rahul Agarwal</h2>
+							<p>Service Number: 002547869852</p>-->
+              <h2>{{consumer_name}}</h2>
+							<p>Service Number: {{consumer_number}}</p>
+						</div>
+						<div class="consumer_info_profile_adress consumer_info_profile_detail">
+							<small>Address</small>
+							<p>{{bill_to_addr_l1}}, {{bill_to_addr_l2}}, {{bill_to_addr_l3}} {{bill_pin_code}}</p>
+              <!--<p>70 , Prabhat Centre, Sector A, Belapur (CBD), Mumbai,  Maharashtra, 400614</p>-->
+						</div>
+						<div class="consumer_info_profile_number consumer_info_profile_detail">
+							<small>Mobile Number</small>
+							<a>{{mobile_number}}</a>
+              <!--<a>+91 8647856987</a>-->
+						</div>
+						<div class="consumer_info_profile_email consumer_info_profile_detail">
+							<small>Email</small>
+							<a>{{email}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="consumer_info_right">
+					<h3>Account Information</h3>
+					<div class="consumer_info_right_box">
+						<div class="consumer_info_right_box_row">
+							<div class="consumer_info_right_box_row_left">
+								<small>Connection Type</small>
+							</div>
+							<div class="consumer_info_right_box_row_right">
+								<!--<strong>PERMANENT</strong>-->
+                <strong>{{consumer_type}}</strong>
+							</div>
+						</div>
+						<div class="consumer_info_right_box_row">
+							<div class="consumer_info_right_box_row_left">
+								<small>Connection Date</small>
+							</div>
+							<div class="consumer_info_right_box_row_right">
+								<!--<strong>15 - Aug - 1947</strong>-->
+                <strong>{{date_of_connection | date: "dd-MMM-yyyy"}}</strong>
+							</div>
+						</div>
+						<div class="consumer_info_right_box_row">
+							<div class="consumer_info_right_box_row_left">
+								<small>Phase</small>
+							</div>
+							<div class="consumer_info_right_box_row_right">
+							<!--	<strong>3</strong>-->
+                <strong>{{phase}}</strong>
+							</div>
+						</div>
+						<div class="consumer_info_right_box_row">
+							<div class="consumer_info_right_box_row_left">
+								<small>Status</small>
+							</div>
+							<div class="consumer_info_right_box_row_right">
+								<!--<strong>Perm. Discon.</strong>-->
+                <strong>{{status}}</strong>
+							</div>
+						</div>
+						<div class="consumer_info_right_box_row">
+							<div class="consumer_info_right_box_row_left">
+								<small>Load</small>
+							</div>
+							<div class="consumer_info_right_box_row_right">
+								<!--<strong>133.33KVA</strong>-->
+                <strong>{{contract_demand_kva}} KVA</strong>
+							</div>
+						</div>
+						<div class="consumer_info_right_box_row">
+							<div class="consumer_info_right_box_row_left">
+								<small>Category</small>
+							</div>
+							<div class="consumer_info_right_box_row_right">
+								<!--<strong>LINHT(23)</strong>-->
+                <strong>{{tariff_category}}</strong>
+							</div>
+						</div>
+						<div class="consumer_info_right_box_row">
+							<div class="consumer_info_right_box_row_left">
+								<small>Meter No.</small>
+							</div>
+							<div class="consumer_info_right_box_row_right">
+								<!--<strong>CESO0138</strong>-->
+                <strong>{{meter_no}}</strong>
+							</div>
+						</div>
+						<div class="consumer_info_right_box_row">
+							<div class="consumer_info_right_box_row_left">
+								<small>Meter Status</small>
+							</div>
+							<div class="consumer_info_right_box_row_right">
+								<!--<strong>Meter Defective</strong>-->
+                <strong>{{meter_status}}</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <app-footer></app-footer>
+</div>

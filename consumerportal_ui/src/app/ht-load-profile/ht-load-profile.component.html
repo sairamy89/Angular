@@ -1,0 +1,999 @@
+<div class="dashboard ht_load_profile_main">
+	<app-header></app-header>
+	<div class="dashboard_bill">
+		<div class="wrapper">
+			<!--<div class="dashboard_ht_load_top">
+				<div class="dashboard_ht_load_top_bg clearfix">
+					<div class="dashboard_ht_load_top_box">
+						<small>Consumer No.</small>
+						<p>000099040930</p>
+					</div>
+					<div class="dashboard_ht_load_top_box">
+						<small>Meter No</small>
+						<p>055 - X0400940</p>
+					</div>
+					<div class="dashboard_ht_load_top_box">
+						<small>Reading Month</small>
+						<p>Jun 2019</p>
+					</div>
+					<div class="dashboard_ht_load_top_box">
+						<small>Contact Demand</small>
+						<p>883</p>
+					</div>
+					<div class="dashboard_ht_load_top_box tarrif">
+						<small>Tarrif</small>
+						<p>146 - HT Public Service Others 11 KV</p>
+					</div>
+					<div class="a_btn">
+						<a href="#.">Generate Report</a>
+					</div>
+				</div>
+			</div>-->
+			<!--<div class="ht_load_gauge">
+				<div class="ht_load_gauge_box">
+					<canvas id="power-factor" style="width:110%; height:120%;"></canvas>
+					<h3>Power Factor</h3>
+					<strong>0.996</strong>
+				</div>
+				<div class="ht_load_gauge_box">
+					<canvas id="load-factor" style="width:110%; height:120%;"></canvas>
+					<h3>Load Factor</h3>
+					<strong>12</strong>
+				</div>
+				<div class="ht_load_gauge_box">
+					<canvas id="billed-md" style="width:110%; height:120%;"></canvas>
+					<h3>Billed MD</h3>
+					<strong>486</strong>
+				</div>
+				<div class="ht_load_gauge_box">
+					<canvas id="kwh-gauge" style="width:110%; height:120%;"></canvas>
+					<h3>KWH</h3>
+					<strong>86222.5</strong>
+				</div>
+				<div class="ht_load_gauge_box">
+					<canvas id="kvah-gauge" style="width:110%; height:120%;"></canvas>
+					<h3>KVAH</h3>
+					<strong>86438</strong>
+				</div>
+				<div class="ht_load_gauge_box">
+					<canvas id="rkvah-lag-gauge" style="width:110%; height:120%;"></canvas>
+					<h3>RKVAH LAG</h3>
+					<strong>6620</strong>
+				</div>
+				<div class="ht_load_gauge_box">
+					<canvas id="rkvah-lead-gauage" style="width:110%; height:120%;"></canvas>
+					<h3>RKVAH LEAD</h3>
+					<strong>5670.5</strong>
+				</div>
+			</div>-->
+			<div class="dashboard_chart">
+				<div class="dashboard_chart_tabing_top">
+					<ul id="tabs-swipe-demo" class="tabs">
+					    <li class="tab col s3"><a class="active" href="#test-swipe-1">Energy Graph</a></li>
+					    <li class="tab col s3"><a href="#test-swipe-2">Voltage Graph</a></li>
+					    <li class="tab col s3"><a href="#test-swipe-3">Current Graph</a></li>
+              <li class="tab col s3"><a href="#test-swipe-4">Power Graph</a></li>
+					</ul>
+				</div>
+				<div class="dashboard_chart_tabing_detail">
+				    <div id="test-swipe-1" class="chart_energy">
+				    	<div class="dashboard_chart_energy">
+				    		<div class="dashboard_ht_load_filter clearfix">
+				    			<div class="dashboard_ht_load_filter_left">
+				    				<strong>Show data by</strong>
+				    				<div class="connection_field bill_date">
+										<div class="input-field">
+										    <select>
+										      <option value="Last Month" selected>Last Month</option>
+										      <option value="Last Month">Last Month</option>
+										      <option value="Last Month">Last Month</option>
+										    </select>
+										</div>
+									</div>
+				    			</div>
+				    			<div class="dashboard_ht_load_filter_right">
+				    				<div class="dashboard_ht_load_filter_list">
+				    					<a (click)="toggleEnergyTable()"></a>
+				    				</div>
+				    				<div class="filter_switch">
+				    					<div class="switch">
+										    <label>
+										      <input type="checkbox">
+										      <span class="lever"></span>
+										    </label>
+										  </div>
+				    				</div>
+				    				<div class="dashboard_ht_load_filter_graph">
+				    					<a (click)="toggleEnergyGraph()"></a>
+				    				</div>
+				    			</div>
+				    		</div>
+				    		<div class="ht_load_profile_chart" [hidden]="!energygraphToggle">
+								  <canvas id="chart_energy" style="width:105%; height:500px;"></canvas>
+				    		</div>
+                <div [hidden]="!energytableToggle">
+								  <div class="dashboard_tabel">
+                    <div class="dashboard_chart_ht_reading_table">
+                      <table class="responsive-table highlight">
+                          <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>KW</th>
+                                <th>KWH</th>
+                                <th>KVA</th>
+                                <th>KVAH</th>
+                                <th>RKVAH Lag</th>
+                                <th>RKVAH Lead</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>04 - SEP - 2019 12:00:00 AM</td>
+                                <td>50.720</td>
+                                <td>89230.500</td>
+                                <td>49.820</td>
+                                <td>80478.500</td>
+                                <td>6020.000</td>
+                                <td>5770.000</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+				    		</div>
+				    	</div>
+				    </div>
+					<div id="test-swipe-2" class="chart_voltage">
+						<div class="dashboard_chart_voltage">
+							<div class="dashboard_ht_load_filter clearfix">
+				    			<div class="dashboard_ht_load_filter_left">
+				    				<strong>Show data by</strong>
+				    				<div class="connection_field bill_date">
+										<div class="input-field">
+										    <select>
+										      <option value="Last Month" selected>Last Month</option>
+										      <option value="Last Month">Last Month</option>
+										      <option value="Last Month">Last Month</option>
+										    </select>
+										</div>
+									</div>
+				    			</div>
+				    			<div class="dashboard_ht_load_filter_right">
+				    				<div class="dashboard_ht_load_filter_list">
+				    					<a (click)="toggleVoltageTable()"></a>
+				    				</div>
+				    				<div class="filter_switch">
+				    					<div class="switch">
+										    <label>
+										      <input type="checkbox">
+										      <span class="lever"></span>
+										    </label>
+										</div>
+				    				</div>
+				    				<div class="dashboard_ht_load_filter_graph">
+				    					<a (click)="toggleVoltageGraph()"></a>
+				    				</div>
+				    			</div>
+				    		</div>
+				    		<div class="ht_load_profile_chart" [hidden]="!voltagegraphToggle">
+								  <canvas id="voltage_graph" style="width:105%; height:500px;"></canvas>
+							  </div>
+                <div [hidden]="!voltagetableToggle">
+								  <div class="dashboard_tabel">
+                    <div class="dashboard_chart_ht_reading_table">
+                      <table class="responsive-table highlight">
+                          <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>KW</th>
+                                <th>KWH</th>
+                                <th>KVA</th>
+                                <th>KVAH</th>
+                                <th>RKVAH Lag</th>
+                                <th>RKVAH Lead</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>04 - SEP - 2019 12:00:00 AM</td>
+                                <td>50.720</td>
+                                <td>89230.500</td>
+                                <td>49.820</td>
+                                <td>80478.500</td>
+                                <td>6020.000</td>
+                                <td>5770.000</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+				    		</div>
+						</div>
+					</div>
+					<div id="test-swipe-3" class="chart_current">
+						<div class="dashboard_chart_current">
+							<div class="dashboard_ht_load_filter clearfix">
+				    			<div class="dashboard_ht_load_filter_left">
+				    				<strong>Show data by</strong>
+				    				<div class="connection_field bill_date">
+										<div class="input-field">
+										    <select>
+										      <option value="Last Month" selected>Last Month</option>
+										      <option value="Last Month">Last Month</option>
+										      <option value="Last Month">Last Month</option>
+										    </select>
+										</div>
+									</div>
+				    			</div>
+				    			<div class="dashboard_ht_load_filter_right">
+				    				<div class="dashboard_ht_load_filter_list">
+				    					<a (click)="toggleCurrentTable()"></a>
+				    				</div>
+				    				<div class="filter_switch">
+				    					<div class="switch">
+										    <label>
+										      <input type="checkbox">
+										      <span class="lever"></span>
+										    </label>
+										</div>
+				    				</div>
+				    				<div class="dashboard_ht_load_filter_graph">
+				    					<a (click)="toggleCurrentGraph()"></a>
+				    				</div>
+				    			</div>
+				    		</div>
+                <div class="ht_load_profile_chart" [hidden]="!currentgraphToggle">
+                  <canvas id="current_graph" style="width:105%; height:500px;"></canvas>
+                </div>
+                <div [hidden]="!currenttableToggle">
+								  <div class="dashboard_tabel">
+                    <div class="dashboard_chart_ht_reading_table">
+                      <table class="responsive-table highlight">
+                          <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>KW</th>
+                                <th>KWH</th>
+                                <th>KVA</th>
+                                <th>KVAH</th>
+                                <th>RKVAH Lag</th>
+                                <th>RKVAH Lead</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>04 - SEP - 2019 12:00:00 AM</td>
+                                <td>50.720</td>
+                                <td>89230.500</td>
+                                <td>49.820</td>
+                                <td>80478.500</td>
+                                <td>6020.000</td>
+                                <td>5770.000</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+				    		</div>
+						</div>
+					</div>
+          <div id="test-swipe-4" class="chart_energy">
+				    	<div class="dashboard_chart_energy">
+				    		<div class="dashboard_ht_load_filter clearfix">
+				    			<div class="dashboard_ht_load_filter_left">
+				    				<strong>Show data by</strong>
+				    				<div class="connection_field bill_date">
+										<div class="input-field">
+										    <select>
+										      <option value="Last Month" selected>Last Month</option>
+										      <option value="Last Month">Last Month</option>
+										      <option value="Last Month">Last Month</option>
+										    </select>
+										</div>
+									</div>
+				    			</div>
+				    			<div class="dashboard_ht_load_filter_right">
+				    				<div class="dashboard_ht_load_filter_list">
+				    					<a (click)="togglePowerTable()"></a>
+				    				</div>
+				    				<div class="filter_switch">
+				    					<div class="switch">
+										    <label>
+										      <input type="checkbox">
+										      <span class="lever"></span>
+										    </label>
+										</div>
+				    				</div>
+				    				<div class="dashboard_ht_load_filter_graph">
+				    					<a (click)="togglePowerGraph()"></a>
+				    				</div>
+				    			</div>
+				    		</div>
+				    		<div class="ht_load_profile_chart" [hidden]="!powergraphToggle">
+								  <canvas id="chart_power" style="width:105%; height:500px;"></canvas>
+				    		</div>
+                <div [hidden]="!powertableToggle">
+								  <div class="dashboard_tabel">
+                    <div class="dashboard_chart_ht_reading_table">
+                      <table class="responsive-table highlight">
+                          <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>KW</th>
+                                <th>KWH</th>
+                                <th>KVA</th>
+                                <th>KVAH</th>
+                                <th>RKVAH Lag</th>
+                                <th>RKVAH Lead</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>01 - JUL - 2019 12:00:00 AM</td>
+                                <td>46.720</td>
+                                <td>86222.500</td>
+                                <td>46.820</td>
+                                <td>86478.500</td>
+                                <td>6620.000</td>
+                                <td>5670.000</td>
+                            </tr>
+                            <tr>
+                                <td>04 - SEP - 2019 12:00:00 AM</td>
+                                <td>50.720</td>
+                                <td>89230.500</td>
+                                <td>49.820</td>
+                                <td>80478.500</td>
+                                <td>6020.000</td>
+                                <td>5770.000</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+				    		</div>
+				    	</div>
+				    </div>
+				</div>
+		</div>
+	</div>
+	<app-footer></app-footer>
+</div>

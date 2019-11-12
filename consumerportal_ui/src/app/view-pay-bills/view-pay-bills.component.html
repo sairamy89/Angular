@@ -1,0 +1,207 @@
+<div class="dashboard view_paybills_main">
+  <app-header></app-header>
+  <div class="dashboard_bill">
+		<div class="wrapper">
+      <!--<div class="dashboard_bill_top clearfix">
+				<div class="dashboard_bill_top_left">
+					<div class="dashboard_bill_top_left_bg clearfix">
+						<div class="dashboard_bill_top_left_profile">
+							<div class="dashboard_bill_top_left_profile_img">
+								<img src="images/dashboard_bill_top_left_profile_img.png" alt="">
+							</div>
+							<div class="dashboard_bill_top_left_profile_text">
+								<p>Welcome</p>
+								<p>Rahul Agarwal</p>
+							</div>
+						</div>
+						<div class="dashboard_bill_top_left_account">
+							<ul>
+							    <li class="consum_no"><strong>Consumer No.</strong>000099040930</li>
+							    <li class="meter_no"><strong>Meter No</strong>055 - X0400940</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="dashboard_bill_top_right">
+					<div class="dashboard_bill_top_right_inr">
+						<div class="connection_field bill_date">
+							<div class="input-field">
+							    <select>
+							      <option value="July 2019" selected>July 2019</option>
+							      <option value="July 2019">July 2019</option>
+							      <option value="July 2019">July 2019</option>
+							    </select>
+							    <label>Select Month</label>
+							</div>
+						</div>
+						<div class="a_btn">
+							<a href="#.">HT load Profile</a>
+						</div>
+					</div>
+				</div>
+			</div>-->
+      <div class="dashboard_chart">
+				<div class="dashboard_chart_tabing_top">
+					<ul id="tabs-swipe-demo" class="tabs">
+					    <li class="tab col s3"><a class="active" href="#latest_bill">Latest Bill</a></li>
+              <li class="tab col s3"><a class="active" href="#bill_summary">Bill Summary</a></li>
+					    <li class="tab col s3"><a href="#comparison_with_peers">Comparison With Peers</a></li>
+					    <li class="tab col s3"><a href="#bill_simulation">Bill Simulation</a></li>
+					</ul>
+				</div>
+				<div class="dashboard_chart_tabing_detail">
+				    <div id="latest_bill" class="chart_energy">
+				    	<div class="last_bill">
+                <!--<h2>Latest Bill</h2>-->
+                <div class="last_bill_otr clearfix">
+                  <div class="last_bill_left">
+                    <div class="last_bill_left_bg">
+                      <div class="last_bill_left_detail" *ngFor="let vpbill of vpBillsData">
+                        <div class="last_bill_left_detail_left">
+                          <ul>
+                              <li><small>Latest Bill Number</small>
+                              <!--<p>00546875964125689135745632</p>-->
+                              <p>{{vpbill.bill_number}}</p></li>
+                              <li><small>Latest Bill Month</small>
+                              <!--<p>Jun 2019</p>-->
+                              <p>Jan 2019</p></li>
+                              <li><small>Billed Days</small>
+                              <!--<p>30</p>-->
+                              <p>31</p></li>
+                              <li><small>Bill Basis</small>
+                              <!--<p>Perm.Discon</p>-->
+                              <p>Discon</p></li>
+                            <li><small>Consumption (kWh)</small>
+                              <!--<p>0.00</p>-->
+                              <p>0.00</p></li>
+                              <li><small>ED %</small>
+                              <!--<p>0.00</p>-->
+                              <p>0.00</p></li>
+                          </ul>
+                        </div>
+                        <div class="last_bill_left_detail_center">
+                          <ul>
+                              <li><small>LF %</small>
+                              <!--<p>70.00</p>-->
+                              <p>{{vpbill.load_factor}}</p></li>
+                              <li><small>Own Transformer (kVA)</small>
+                              <!--<p>250.00</p>-->
+                              <p>250.00</p></li>
+                            <li><small>Contract Demand</small>
+                              <!--<p>133.33KVA</p>-->
+                              <p>{{vpbill.contract_demand_kva}} kVA</p></li>
+                            <li><small>MD</small>
+                              <p>0.00</p></li>
+                            <li><small>MD Fiscal</small>
+                            <p>0.00</p></li>
+                            <li><small>Rebate Allowable</small>
+                            <p>0.00</p></li>
+                          </ul>
+                        </div>
+                        <div class="last_bill_left_detail_right">
+                          <ul>
+                              <li><small>Gross Bill Amount</small>
+                              <!--<p>1,53,657.00</p>-->
+                              <p>{{vpbill.bill_amount | number}}</p></li>
+                              <li><small>Issued Date</small>
+                              <!--<p>01 - Jul - 2019</p>-->
+                              <p>{{vpbill.bill_date | date: "dd-MMM-yyyy"}}</p></li>
+                              <li><small>Rebate End Date</small>
+                              <!--<p>17 - Jul - 2019</p>-->
+                              <p>20 - Jul - 2019</p></li>
+                              <li><small>Payment Due Date</small>
+                              <!--<p>06 - Jul - 2019</p>-->
+                              <p>{{vpbill.bill_due_date | date: "dd-MMM-yyyy"}}</p></li>
+                              <li><small>Net Bill Amount</small>
+                              <!--<p>1,53,657.00</p>-->
+                              <p>{{vpbill.bill_amount | number}}</p></li>
+                          </ul>
+                          <div class="a_btn">
+                            <a href="#.">Pay Bill</a>
+                          </div>
+                          <!--<div class="a_btn">
+                            <a href="#.">View History</a>
+                          </div>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="last_bill_right fl">
+                    <h2>Bill Summary</h2>
+                    <div class="last_bill_chart">
+                      <canvas id="yearBills-chart"></canvas>
+                    </div>
+                  </div>-->
+                </div>
+              </div>
+				    </div>
+          <div id="bill_summary" class="chart_energy">
+				    	<div class="dashboard_chart_energy">
+				    		<div class="bill_summary_right">
+                    <h2>Bill Summary</h2>
+                    <div class="last_bill_chart">
+                      <canvas id="yearBills-chart" style="width:100%; height:400px;"></canvas>
+                    </div>
+                </div>
+				    	</div>
+				    </div>
+					<div id="comparison_with_peers" class="chart_demand">
+						<div class="dashboard_chart_demand">
+							<h3>Comparison With Peers</h3>
+							<h2>Bill Amount</h2>
+							<canvas id="comparison_with_peers-chart" style="width:105%; height:480px;"></canvas>
+						</div>
+					</div>
+					<div id="bill_simulation" class="chart_ht_reading">
+						<div class="dashboard_chart_ht_reading">
+              <h3>Bill Simulation</h3>
+              <div class="bill_simulation_otr clearfix">
+                <div class="bill_simulation_left">
+                  <div class="units">
+                    <h6>Units</h6>
+                    <div class="sliders">
+                      <div class="slidecontainer">
+                        <small>kWh</small>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="kwh">
+                        <p class="value"><span id="kwhO"></span></p>
+                      </div>
+                      <div class="slidecontainer">
+                        <small>kVAh</small>
+                        <input type="range" min="1" max="100" value="20" class="slider" id="kvah">
+                        <p class="value"><span id="kvahO"></span></p>
+                      </div>
+                      <div class="slidecontainer">
+                        <small>RkVAh</small>
+                        <input type="range" min="1" max="100" value="80" class="slider" id="rkvah">
+                        <p class="value"><span id="rkvahO"></span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pf">
+                    <h6>PF</h6>
+                    <div class="slidecontainer">
+                      <input type="range" min="0.0" max="1.0" value="0.6" step="0.1" class="slider" id="pf">
+                      <p class="value"><span id="pfO"></span></p>
+                    </div>
+                  </div>
+                  <div class="todUnits">
+                    <h6>TOD Units</h6>
+                    <div class="slidecontainer">
+                      <input type="range" min="1" max="100" value="90" class="slider" id="todUnits">
+                      <p class="value"><span id="todUnitsO"></span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="bill_simulation_right">
+                  <small>Invoice Amount</small>
+                  <p>&#8377; {{780000 | number}}</p>
+                </div>
+              </div>
+						</div>
+					</div>
+				</div>
+		  </div>
+		</div>
+	</div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,142 @@
+<div class="main_page">
+	<div class="main_page_inr">
+		<div class="page_left">
+			<div class="logo">
+				<a href="#."><img src="../../../assets/images/maha-vitaran-logo-white.svg"></a>
+			</div>
+			<div class="about_ht_portal">
+				<h1><strong>HT</strong> Consumer Portal</h1>
+				<p>HT Consumer Portal facilitates to see the energy graph, demand graph and HT reading history for registered HT consumers</p>
+			</div>
+			<div class="ht_link">
+				<ul>
+				    <li><a href="#.">View/Pay Bills</a></li>
+				    <li><a href="#.">HT Circulars</a></li>
+				    <li><a href="#.">HT Consumer Help Desk</a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				<small>Copyright © 2004-2019 MSEDCL</small>
+			</div>
+		</div>
+		<div class="page_right">
+			<div class="page_form">
+				<div class="login_form page_form_bg" [hidden]="!login">
+					<h2>Login</h2>
+					<form class="page_form_inr" name="loginform" method="post" #loginCtrl="ngForm">
+              <div class="input-field">
+                <input id="username" type="text" class="validate" name="userid" [(ngModel)]="loginfrm.userid" required>
+                <label for="username">Username</label>
+              </div>
+              <div class="input-field">
+                <input id="password" type="password" class="validate" name="password" [(ngModel)]="loginfrm.password" required>
+                <label for="password">Password</label>
+                <div class="password_strength">
+                  <p><a href="#" (click)="toggleForgotForm()">Forgot Password?</a></p>
+                </div>
+              </div>
+              <div class="form_recaptch">
+                <re-captcha name="captcha" [(ngModel)]="loginfrm.captcha" required #captchaControl="ngModel"></re-captcha>
+                <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error">Captcha must be validated</div>
+                <div [hidden]="!captchaControl.valid" class="success">Captcha is valid</div>
+                <div [hidden]="loginCtrl.form.valid" class="message">Form & reCaptcha must be filled out</div>
+                <div [hidden]="!loginCtrl.form.valid" class="success">Form is valid</div>
+              </div>
+
+              <div class="input-field input-submit">
+				        	<button type="button" [disabled]="!loginCtrl.form.valid" (click)="signInwithUserID()">login</button>
+				      </div>
+				      <div class="login_register">
+				        <p>New User?</p><a href="#" (click)="toggleRegisterForm()">Regsiter</a>
+				      </div>
+					</form>
+				</div>
+
+        <div class="login_form page_form_bg" [hidden]="!forgotpwd">
+					<h2>Forgot Password</h2>
+					<form class="page_form_inr" name="forgotform" method="post" #forgotCtrl="ngForm">
+              <div class="input-field">
+                <label for="frgt_email">Email</label>
+                <input id="frgt_email" type="email" class="validate" name="email" [(ngModel)]="forgotfrm.email" required email>
+              </div>
+              <div class="input-field">
+                <label for="frgt_mobile">Mobile</label>
+                <input id="frgt_mobile" type="text" class="validate" name="mobile" [(ngModel)]="forgotfrm.mobile" required mobile>
+              </div>
+              <div class="input-field">
+                <label for="frgt_password">New Password</label>
+                <input id="frgt_password" type="password" class="validate" name="password" [(ngModel)]="forgotfrm.password" required>
+              </div>
+              <div class="input-field input-submit">
+				        	<button type="button" [disabled]="!forgotCtrl.form.valid">login</button>
+				      </div>
+              <div class="login_register">
+				        <p>Know the Password?</p><a href="#" (click)="toggleLoginForm()">Login</a>
+				      </div>
+					</form>
+				</div>
+
+        <div class="register_form page_form_bg" [hidden]="!register">
+						<h2>Create an account</h2>
+						<form class="page_form_inr" name="signupform" (ngSubmit)="signupCtrl.form.valid" #signupCtrl="ngForm" [mustMatch]="['password','cnfrmpassword']"  novalidate>
+                <div class="input-field">
+                  <input id="consumer_number" type="text" class="validate" name="consumerNumber" [(ngModel)]="signupfrm.consumerNumber" #consumerNumber="ngModel" [ngClass]="{'is-invalid': signupCtrl.submitted && consumerNumber.invalid }" required>
+                  <label for="consumer_number">Consumer Number</label>
+                  <div *ngIf="signupCtrl.submitted && consumerNumber.invalid" class="error">
+                    <div *ngIf="consumerNumber.errors.required">Consumer Number is required</div>
+                  </div>
+                </div>
+                <div class="input-field">
+                  <input id="mobile_number" type="text" class="validate" name="mobile" [(ngModel)]="signupfrm.mobile" #mobile="ngModel"  [ngClass]="{'is-invalid': signupCtrl.submitted && mobile.invalid }" required>
+                  <label for="mobile_number">Mobile Number</label>
+                  <div *ngIf="signupCtrl.submitted && mobile.invalid" class="error">
+                    <div *ngIf="mobile.errors.required">Mobile is required</div>
+                  </div>
+                </div>
+                <div class="input-field">
+                  <input id="email" type="email" class="validate" name="email" [(ngModel)]="signupfrm.email" #email="ngModel" [ngClass]="{'is-invalid': signupCtrl.submitted && email.invalid }" required email>
+                  <label for="email">Email</label>
+                  <div *ngIf="signupCtrl.submitted && email.invalid" class="error">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                  </div>
+                </div>
+                <div class="input-field">
+                  <input id="username" type="text" class="validate" name="userid" [(ngModel)]="signupfrm.userid" #userid="ngModel" [ngClass]="{'is-invalid': signupCtrl.submitted && userid.invalid }"  required>
+                  <label for="username">Username</label>
+                  <div *ngIf="signupCtrl.submitted && userid.invalid" class="error">
+                    <div *ngIf="password.errors.required">UserID is required</div>
+
+                  </div>
+                </div>
+                <div class="input-field">
+                  <input id="password" type="password" class="validate" name="password" [(ngModel)]="signupfrm.password" #password="ngModel"  [ngClass]="{'is-invalid': signupCtrl.submitted && password.invalid }" required minlength="6">
+                  <label for="password">Password</label>
+                  <div *ngIf="signupCtrl.submitted && consumerNumber.invalid" class="error">
+                    <div *ngIf="consumerNumber.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">Password must be atleast 6 characters</div>
+                  </div>
+                  <div class="password_strength">
+                    <password-strength-meter [password]="signupfrm.password" [enableFeedback]="true"></password-strength-meter>
+                  </div>
+                </div>
+                <div class="input-field">
+                  <input id="confirm_password" type="password" class="validate" name="cnfrmpassword" [(ngModel)]="signupfrm.cnfrmpassword" #cnfrmpassword="ngModel" [ngClass]="{'is-invalid': signupCtrl.submitted && cnfrmpassword.invalid }"  required>
+                  <label for="confirm_password">Confirm Password</label>
+                  <div *ngIf="signupCtrl.submitted && cnfrmpassword.invalid" class="error">
+                    <div *ngIf="cnfrmpassword.errors.required">Confirm Password is required</div>
+                    <div *ngIf="cnfrmpassword.errors.mustMatch">Password must match</div>
+                  </div>
+                </div>
+                <div class="input-field input-submit">
+                  <button type="submit">Register</button>
+                </div>
+                <div class="login_register">
+                  <p>Already a User?</p><a href="#" (click)="toggleLoginForm()">Login</a>
+                </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>

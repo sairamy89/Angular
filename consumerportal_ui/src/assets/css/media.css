@@ -1,0 +1,119 @@
+@media screen and (max-width:1440px)
+{
+	/*.dashboard .dashboard_chart_tabing_detail .dashboard_chart_energy canvas , .dashboard .dashboard_chart_tabing_detail .dashboard_chart_demand canvas , .dashboard .dashboard_chart_tabing_detail .dashboard_chart_ht_reading canvas{height: 445px !important;}*/
+}
+
+
+@media screen and (max-width:1300px){
+	.my_connections_detail{padding:25px 30px 25px 30px}
+	.my_connections_detail p{font-size:20px}
+	.my_connections_box{padding:47px 28px 37px 28px;}
+	.connection_form_submit {padding-left: 15px;}
+	.consumer_info_right_box_row_right strong {font-size:21px;}
+	.consumer_info_right h3{padding:0 0 10px 0;}
+	.consumer_info_right_box_row {padding:12px 0 12px 0;}
+	.consumer_info_profile_name{padding:23px 0 60px 0;}
+	.consumer_info_left_bg{padding:50px 40px 60px 40px;}
+	.consumer_info_profile_detail p, .consumer_info_profile_detail a{font-size:20px;}
+	.consumer_info_profile_name h2{font-size:22px;padding:0 0 3px 0;}
+	.dashboard_ht_load_top_bg{padding:30px 30px 30px 30px}
+	.dashboard_ht_load_top_box p{font-size:20px}
+	.ht_load_gauge{padding:30px 0 0 0; margin:0 -20px;}
+	.ht_load_gauge_box {padding:0 10px;}
+	.dashboard .ht_load_gauge_box canvas{width:175px!important; height:92px!important;}
+	.dashboard_ht_load_filter{padding:20px 39px 20px 39px;}
+	.ht_load_profile_main .dashboard_chart_tabing_detail .dashboard_chart_energy , .ht_load_profile_main .dashboard_chart_tabing_detail .dashboard_chart_voltage , .ht_load_profile_main .dashboard_chart_tabing_detail .dashboard_chart_current{height:564px;}
+	.ht_load_profile_main .dashboard_chart_tabing_detail .carousel.carousel-slider .carousel-item{min-height:645px;}
+	.dashboard.ht_load_profile_main .dashboard_chart_tabing_detail .dashboard_chart_energy canvas , .dashboard.ht_load_profile_main .dashboard_chart_tabing_detail .dashboard_chart_voltage canvas, .dashboard.ht_load_profile_main .dashboard_chart_tabing_detail .dashboard_chart_current canvas{height:450px !important;}
+	.dashboard_bill_top_left_account{max-width:37%;}
+	.dashboard_bill_top_right_inr{padding:32px 30px 32px 30px;}
+	.dashboard_bill_top_left_bg{padding:27px 35px 27px 35px;}
+	.dashboard_bill_top_right_inr .a_btn{padding:0 0 0 40px;}
+	.last_bill_left_detail p , .bill_history_top p{font-size: 21px;}
+	.last_bill_left_bg {padding: 28px 40px 22px 40px;}
+	.last_bill_left .a_btn a{font-size:21px;}
+	.dashboard_chart_tabing_detail .dashboard_chart_energy , .dashboard_chart_tabing_detail .dashboard_chart_demand , .dashboard_chart_tabing_detail .dashboard_chart_ht_reading{padding:40px 0px 0 40px; height: 490px;}
+	.carousel.carousel-slider .carousel-item .dashboard_chart_energy h2 , .carousel.carousel-slider .carousel-item .dashboard_chart_demand h2 , .carousel.carousel-slider .carousel-item .dashboard_chart_ht_reading h2{left:5px;}
+	.bill_history_top{padding:28px 0px 28px 40px;}
+	.bill_history_top_left{width:18%;}
+	.bill_history_top_right{width:82%;}
+	.bill_history h2{font-size:21px;padding:0 0 20px 25px;}
+	.bill-chart .dashboard_chart_tabing_detail h3{font-size:21px;padding:0 0 20px 0px}
+	.bill-chart .dashboard_chart_tabing_detail .dashboard_chart_demand {padding:25px 0px 0 40px; height:515px;}
+	.bill-chart .carousel.carousel-slider .carousel-item .dashboard_chart_demand h2{left:-7px}
+	.bill-chart .dashboard_chart_tabing_detail .carousel.carousel-slider .carousel-item{min-height:600px}
+}
+
+
+@media screen and (max-width:1200px){
+	.dashboard_menu{width:54%;padding-left:30px}
+	.dashboard_menu > ul > li{margin:0 8px}
+	.dashboard_notification {padding: 0 30px 0 0;}
+	.dashboard_header_logo{padding:6px 0}
+	.connection_inr_title h3 {font-size:21px;}
+	.connection_inr{padding:25px 20px 25px 20px}
+	.connection_field{padding:10px 10px 0;}
+	.connection_form{padding-left:10px;}
+	.connection_otr{padding:10px 0 10px 0;}
+	.my_connections_inr{padding:30px 30px 25px 30px;}
+	.my_connections_box{padding:30px 15px 30px 15px;}
+	.my_connections_box_text h3{font-size:21px;}
+	.my_connections_box_text{margin:25px 0 20px;}
+	.my_connections_detail_box {padding-right:15px;}
+	.my_connections_detail p{font-size:18px;}
+	.my_connections{padding:20px 0 15px;}
+	.consumer_info_left{width:47%;padding-right:40px;}
+	.consumer_info_right{width:51%;}
+	.consumer_info_otr{padding:20px 90px 16px 71px;}
+	.consumer_info_right_box_row_right strong{font-size:19px;}
+	.consumer_info_right_box_row_left{width:56%;}
+	.consumer_info_right_box_row_left small{font-size:17px;}
+	.consumer_info_profile_name{padding:23px 0 50px 0;}
+	.consumer_info_left_bg{padding:40px 40px 50px 40px;}
+	.consumer_info_profile_name h2{font-size:20px;padding:0 0 0px 0;}
+	.consumer_info_profile_number{padding:28px 0 28px 0;}
+	.consumer_info_profile_detail p , .consumer_info_profile_detail a{font-size:18px;}
+	.dashboard_ht_load_top_bg{padding:25px 20px 25px 20px}
+	.dashboard_ht_load_top_box p{font-size:19px;}
+	.dashboard_ht_load_top_box small{font-size:15px;}
+	.dashboard_ht_load_top_bg .a_btn{display:block;width:200px;margin:20px auto 0;}
+	.dashboard_ht_load_top_box.tarrif{min-width:32%;}
+	.dashboard_ht_load_top_box{max-width:17%;min-width:17%;}
+	.dashboard .ht_load_gauge_box canvas{width:145px!important;height:72px!important;}
+	.ht_load_profile_chart{padding:20px 0px 20px 10px;}
+	.last_bill{padding:25px 30px 30px 30px;}
+	.last_bill h2{font-size:21px;padding:0 0 10px 10px;}
+	.last_bill_right h2{font-size:21px;}
+	.last_bill_left_bg{padding:20px 30px 22px 30px;}
+	.last_bill_left_detail p{font-size:20px;}
+	.last_bill_left_detail small{font-size:15px;}
+	.last_bill_left_detail ul li{padding:5px 0;}
+	.last_bill_left .a_btn a{font-size:20px;}
+	.last_bill_left{padding:0 0 0 18px;}
+	.dashboard_bill_top_left_profile_text p{font-size:18px;line-height:23px;}
+	.dashboard_bill_top_left_bg{padding:25px 25px 25px 25px;}
+	.dashboard_bill_top_left_account{max-width:42%;}
+	.dashboard_bill_top_left_account{max-width:42%;}
+	.dashboard_bill_top_right_inr .a_btn{padding:0 0 0 25px;}
+	.dashboard_bill_top_right_inr{padding:30px 25px 30px 25px;}
+	.dashboard_chart_tabing_top ul.tabs li.indicator {bottom: -6px;}
+	.dashboard_chart_tabing_detail .dashboard_chart_energy,.dashboard_chart_tabing_detail .dashboard_chart_demand,.dashboard_chart_tabing_detail .dashboard_chart_ht_reading{padding:30px 0px 0 40px;height:475px;}
+	/*.dashboard .dashboard_chart_tabing_detail .dashboard_chart_energy canvas , .dashboard .dashboard_chart_tabing_detail .dashboard_chart_demand canvas , .dashboard .dashboard_chart_tabing_detail .dashboard_chart_ht_reading canvas{height:430px !important;}*/
+	.dashboard_chart_tabing_detail .carousel.carousel-slider .carousel-item{min-height:555px;}
+	.bill_history{padding:25px 24px 20px 24px;height:780px;}
+	.bill_history_bottom{padding:30px 0 0 0;}
+	.bill_history_top{padding:25px 0px 25px 25px;}
+	.bill_history_top p{font-size:19px;}
+	.bill_history h2{font-size:20px;padding:0 0 10px 15px;}
+	.bill_history_top small{font-size:15px;}
+	.bill-chart .dashboard_chart_tabing_detail h3{font-size:20px;padding:0 0 15px 0px}
+	.bill-chart .dashboard_chart_tabing_detail .dashboard_chart_demand{padding:18px 0px 0 40px; height:500px;}
+	.bill-chart .dashboard_chart_tabing_detail .carousel.carousel-slider .carousel-item {min-height:585px;}
+	.dashboard_tabel .dashboard_chart_ht_reading_table table.responsive-table.highlight thead th:first-child , .dashboard_tabel .dashboard_chart_ht_reading_table table.responsive-table.highlight tbody td:first-child{padding-left:20px;width:25%;}
+	.dashboard_tabel .dashboard_chart_ht_reading_table table.responsive-table.highlight thead th{padding:13px 10px 13px 20px;font-size:16px}
+	.dashboard_tabel .dashboard_chart_ht_reading_table table.responsive-table.highlight tbody td{padding:13px 10px 13px 20px; font-size:15px;}
+	.dashboard_tabel {height:534px;}
+	.dashboard_tabel .dashboard_chart_ht_reading_table table.responsive-table.highlight tbody {height:476px;}
+}
+
+
