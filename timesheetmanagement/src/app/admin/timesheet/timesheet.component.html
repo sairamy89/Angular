@@ -1,0 +1,142 @@
+<br />
+<h6 class="text-left"> Add/Edit TimeSheets </h6>
+<form #timesheetForm="ngForm" (ngSubmit)="onSubmit(timesheetForm)">
+  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="timeshtService.selectedTimesheet.$key"/>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Project:</label>
+        </div>
+        <select class="form-control empty" id="inputGroupSelect01" name="project" #project="ngModel" [(ngModel)]="timeshtService.selectedTimesheet.project" required>
+          <option [ngValue]="undefined" disabled selected>Select</option>
+          <option *ngFor="let project of projectList" [ngValue]="project.name">{{project.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect02">Task:</label>
+        </div>
+        <select class="form-control empty" id="inputGroupSelect02" name="task" #task="ngModel" [(ngModel)]="timeshtService.selectedTimesheet.task" required>
+          <option [ngValue]="undefined" disabled selected>Select</option>
+          <option *ngFor="let task of taskList" [ngValue]="task.task">{{task.task}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inlineFormInputGroup">Date:</label>
+        </div>
+        <input class="form-control" id="inlineFormInputGroup" placeholder="YYYY-MM-DD" autocomplete="off" name="d" #c2="ngModel" [(ngModel)]="timeshtService.selectedTimesheet.d" ngbDatepicker #d="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <div class="input-group mb-0">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect03">Work Hours:</label>
+        </div>
+        <select class="form-control empty" id="inputGroupSelect03" name="time" #time="ngModel" [(ngModel)]="timeshtService.selectedTimesheet.time" required>
+          <option [ngValue]="undefined" disabled selected>Select</option>
+          <option *ngFor="let hour of hours" [ngValue]="hour.value">{{hour.name}}</option>
+        </select>
+      </div>
+      <!-- <ngb-timepicker name="t" #t="ngModel" [(ngModel)]="timeshtService.selectedTimesheet.t" [spinners]="true"></ngb-timepicker> -->
+    </div>
+    <div class="form-group col-md-4">
+      <button class="btn btn-default" type="submit"  [disabled]="!timesheetForm.valid"><i class="fa fa-floppy-o"></i> Submit </button>&nbsp;
+      <button class="btn btn-default" type="button" (click)="onReset(timesheetForm)"><i class="fa fa-repeat"></i> Reset </button>
+    </div>
+  </div>
+</form>
+<br />
+<h6 class="text-center">Timesheets</h6>
+<div class="form-row">
+  <div class="form-group col-md-12">
+    <div class="input-group mb-0">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inlineFormInputGroup">Search:</label>
+      </div>
+      <input class="form-control" type="text" [(ngModel)]="term" />
+    </div>
+  </div>
+  <!--<div class="form-group col-md-4">
+    <div class="input-group mb-0">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inlineFormInputGroup">Filters:</label>
+      </div> &nbsp;&nbsp;
+      <div class="btn-group btn-group-toggle">
+        <label class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="model.approved" /> Approved
+        </label>
+      </div> &nbsp;&nbsp;
+      <div class="btn-group btn-group-toggle">
+        <label class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="model.declined" /> Declined
+        </label>
+      </div>
+    </div>
+  </div>-->
+</div>
+<br />
+<div class="table-responsive-md">
+  <table class="table table-sm table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Project</th>
+          <th scope="col">Task</th>
+          <th scope="col">Date</th>
+          <th scope="col">Duration(In Hours)</th>
+          <th scope="col">Edit/Delete</th>
+          <th scope="col">Declined</th>
+          <th scope="col">Comments</th>
+        </tr>
+      </thead>
+      <tbody> 
+        <tr *ngFor="let timesheet of timesheetsList | filter:term" [ngClass]="{'selected': timesheet.$key === isSelected}">
+          <td>{{timesheet.$key}}</td>
+          <td>{{timesheet.project}}</td>
+          <td>{{timesheet.task}}</td>
+          <td>{{timesheet.formatedDate}}</td>
+          <td>{{timesheet.time}}</td>
+          <td *ngIf="!timesheet.approved">
+            <a class="btn" (click)="onEdit(timesheet)">
+              <i class="fa fa-pencil-square-o"></i>
+            </a> &nbsp;
+            <a class="btn" (click)="onDelete(timesheet.$key)">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </td>
+          <td *ngIf="timesheet.approved">
+            <a class="btn" disabled="disabled">
+              <i class="fa fa-check-square-o fa-lg" aria-hidden="true" style="color: green"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn" disabled="disabled" *ngIf="timesheet.declined">
+              <i class="fa fa-minus-square-o fa-lg" aria-hidden="true" style="color: red"></i>
+            </a>
+            <a class="btn" disabled="disabledgrey" *ngIf="!timesheet.declined">
+              <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn" *ngIf="timesheet.comment.isActive" placement="top" data-toggle="popover" popoverTitle="Comment:" ngbPopover={{timesheet.comment.message}}>
+              <i class="fa fa-comments-o fa-lg" aria-hidden="true"></i>
+            </a>
+            <a class="btn" disabled="disabledgrey" *ngIf="!timesheet.comment.isActive">
+              <i class="fa fa-comment-o" aria-hidden="true"></i>
+            </a>
+          </td>
+        </tr>
+    <tbody>
+  </table>
+</div>

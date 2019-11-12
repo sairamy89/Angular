@@ -1,0 +1,72 @@
+<br />
+<h6 class="text-left"> Add/Edit Tasks </h6>
+<form #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
+  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="taskService.selectedTask.$key"/>
+  <div class="form-row">
+    <!-- <div class="form-group col-md-4">
+      <input class="form-control" name="id" #id="ngModel" [(ngModel)]="taskService.selectedTask.id" Placeholder="Task ID" required/>
+    </div> -->
+    <div class="form-group col-md-9">
+      <input class="form-control" name="task" #task="ngModel" [(ngModel)]="taskService.selectedTask.task" autocomplete="off" Placeholder="Enter Task" required/>
+    </div>
+    <!-- <div class="form-group col-md-4">
+      <select class="form-control empty" name="project" #project="ngModel" [(ngModel)]="taskService.selectedTask.project">
+        <option Value="" selected disabled>Projects</option>
+        <option *ngFor="let project of projects" [ngValue]="project.name">{{project.name}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <select class="form-control empty" name="employee" #employee="ngModel" [(ngModel)]="taskService.selectedTask.employee">
+        <option Value="" selected disabled>Employees</option>
+        <option *ngFor="let employee of employees" [ngValue]="employee.id">{{employee.name}}</option>
+      </select>
+    </div> -->
+    <div class="form-group col-md-3">
+      <button class="btn btn-default" type="submit"  [disabled]="!taskForm.valid"><i class="fa fa-floppy-o"></i> Submit </button>&nbsp;
+      <button class="btn btn-default" type="button" (click)="onReset(taskForm)"><i class="fa fa-repeat"></i> Reset </button>
+    </div>
+  </div>
+</form>
+
+<br />
+<h6 class="text-center">Tasks List</h6>
+<div class="form-group col-md-12">
+  <div class="input-group mb-0">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inlineFormInputGroup">Search:</label>
+    </div>
+    <input class="form-control" type="text" [(ngModel)]="term" />
+  </div>
+</div>
+<div class="table-responsive-md">
+  <table class="table table-sm table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Task_Name</th>
+          <!-- <th scope="col">Project</th>
+          <th scope="col">AssignedTo</th> -->
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody> 
+        <tr *ngFor="let task of taskList | filter:term" [ngClass]="{'selected': task.$key === isSelected}">
+          <td>{{task.$key}}</td>
+          <td>{{task.task}}</td>
+          <!-- <td>{{task.project}}</td>
+          <td>{{task.employee}}</td> -->
+          <td>
+            <a class="btn" (click)="onEdit(task)">
+              <i class="fa fa-pencil-square-o"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn" (click)="onDelete(task.$key)">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </td>
+        </tr>
+    <tbody>
+  </table>
+</div>

@@ -1,0 +1,15 @@
+select.empty {
+	color: grey;
+}
+select option:first-child {
+	display: none;
+}
+
+table tr.selected {
+	background-color: darkslategrey !important;
+	color: ivory;
+}
+
+.form-group {
+	margin-bottom: 0%;
+}

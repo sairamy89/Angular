@@ -1,0 +1,187 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="http://esyasoft.com/" target="_blank">
+    <img src="./assets/images/esya-logo-in.png" height="30" alt="">
+  </a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link disabled">Employee</a>
+      <a class="nav-item nav-link active">Manager<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link disabled">Executive</a>
+      <a class="nav-item nav-link disabled">Admin</a>
+    </div>
+  </div>
+  <div class="btn-group open">
+    <a class="btn btn-outline-success btn-sm" href="" (click)="authService.logout()">{{displayName}} &nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+  </div>
+</nav>
+<br />
+<div class="container-fluid">
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-timesheet-tab" data-toggle="tab" href="#nav-timesheet" role="tab" aria-controls="nav-timesheet" aria-selected="true">TimeSheets</a>
+    <a class="nav-item nav-link" id="nav-approval-tab" data-toggle="tab" href="#nav-approval" role="tab" aria-controls="nav-approval" aria-selected="false">Approval</a>
+    <a class="nav-item nav-link" id="nav-projects-tab" data-toggle="tab" href="#nav-projects" role="tab" aria-controls="nav-projects" aria-selected="false">Projects</a>
+    <a class="nav-item nav-link" id="nav-tasks-tab" data-toggle="tab" href="#nav-tasks" role="tab" aria-controls="nav-tasks" aria-selected="false">Tasks</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="row tab-pane fade show active" id="nav-timesheet" role="tabpanel" aria-labelledby="nav-timesheet-tab">
+    <div class="col-md-11">
+      <app-timesheet> </app-timesheet>
+    </div>
+  </div>
+  <div id="nav-projects" class="row tab-pane fade" role="tabpanel" aria-labelledby="nav-projects-tab">
+    <div class="col-md-11">
+      <app-project> </app-project>
+    </div>
+  </div>
+  <div id="nav-tasks" class="row tab-pane fade" role="tabpanel" aria-labelledby="nav-tasks-tab">
+    <div class="col-md-11">
+      <app-task> </app-task>
+    </div>
+  </div>
+  <div id="nav-approval" class="row tab-pane fade" role="tabpanel" aria-labelledby="nav-approval-tab">
+    <div class="col-md-12">
+      <br />
+      <div [hidden]="!managerFormToggle">
+        <h6 class="text-left"> Choose Employee TimeSheets </h6>
+        <form #managerViewForm="ngForm" (ngSubmit)="onSubmit(managerViewForm)">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Project:</label>
+                </div>
+                <select class="form-control empty" id="inputGroupSelect01" name="project" #project="ngModel" [(ngModel)]="mngrService.selectedTimesheet.project" required>
+                  <option [ngValue]="undefined" disabled selected>Select</option>
+                  <option *ngFor="let project of projectList" [ngValue]="project.name">{{project.$key}} - {{project.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect02">Employee:</label>
+                </div>
+                <select class="form-control empty" id="inputGroupSelect02" name="employee" #employee="ngModel" [(ngModel)]="mngrService.selectedTimesheet.employee" required>
+                  <option [ngValue]="undefined" disabled selected>Select</option>
+                  <option *ngFor="let employee of employeeList" [ngValue]="employee.uid">{{employee.id}} - {{employee.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <div class="input-group mb-0">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inlineFormInputGroup">Date:</label>
+                </div>
+                <input class="form-control" id="inlineFormInputGroup" placeholder="YYYY-MM-DD" autocomplete="off" name="d" #c2="ngModel" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="mngrService.selectedTimesheet.d" required/>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <button class="btn btn-default" type="submit"  [disabled]="!managerViewForm.valid"><i class="fa fa-floppy-o"></i> Submit </button>&nbsp;
+              <button class="btn btn-default" type="button" (click)="onReset(managerViewForm)"><i class="fa fa-repeat"></i> Reset </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div [hidden]="!commentFormToggle">
+        <h6 class="text-left"> Add Comment </h6>
+        <form ng-controller="formCtrl">
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect02">TimeSheetID:</label>
+                </div>&nbsp;
+                <div style="text-align: center;">{{timesheetID}}</div>
+              </div>
+            </div>
+            <div class="form-group col-md-8">
+              <div class="input-group mb-0">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inlineFormInputGroup">Message:</label>
+                </div>
+                <input type="text" class="form-control" name="message" [(ngModel)]="ngValue" />
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <button class="btn btn-default" type="submit"  (click)="onComment(timesheetID, ngValue)"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Send </button>&nbsp;
+              <button class="btn btn-default" type="button" (click)="closeCommentForm()"><i class="fa fa-times" aria-hidden="true"></i> Close </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br />
+        <div [hidden]="!noData">
+          <div style="text-align: center;"> Sorry!! for given inputs, we don't have any data to show. Please try with other inputs </div>
+        </div>
+        <div [hidden]="!loadData">
+          <h6 class="text-center">{{empName}} TimeSheets</h6>
+          <div class="form-group col-md-12">
+            <div class="input-group mb-0">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inlineFormInputGroup">Search:</label>
+              </div>
+              <input class="form-control" type="text" [(ngModel)]="term" />
+            </div>
+          </div>
+          <br />
+          <div class="table-responsive-md">
+            <table class="table table-sm table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Project</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Duration(In Hours)</th>
+                    <th scope="col">Approve/Decline</th>
+                    <th scope="col">Comment</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <tr *ngFor="let empTimesheet of empTimesheetList | filter:term" [ngClass]="{'selected': empTimesheet.$key === isSelected}">
+                    <td>{{empTimesheet.$key}}</td>
+                    <td>{{empTimesheet.project}}</td>
+                    <td>{{empTimesheet.task}}</td>
+                    <td>{{empTimesheet.formatedDate}}</td>
+                    <td>{{empTimesheet.time}}</td>
+                    <td>
+                      <a class="btn" disabled="disabled" *ngIf="empTimesheet.approved">
+                        <i class="fa fa-check-square-o fa-lg" aria-hidden="true" style="color: green"></i>
+                      </a>
+                      <a class="btn" (click)="onApprove(empTimesheet.$key)" *ngIf="!empTimesheet.approved">
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                      </a> 
+                      &nbsp;&nbsp;
+                      <a class="btn" disabled="disabled" *ngIf="empTimesheet.declined">
+                        <i class="fa fa-minus-square-o fa-lg" aria-hidden="true" style="color: red"></i>
+                      </a>
+                      <a class="btn" (click)="onDecline(empTimesheet.$key)" *ngIf="!empTimesheet.declined">
+                        <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <a class="btn" *ngIf="!empTimesheet.comment.isActive" disabled="disabledgrey">
+                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                      </a>
+                      <a class="btn" *ngIf="empTimesheet.comment.isActive" (click)="toggleCommentForm(empTimesheet)">
+                        <i class="fa fa-comment-o fa-lg" aria-hidden="true"></i>
+                      </a>
+                    </td>
+                  </tr>
+              <tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>

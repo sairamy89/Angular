@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Manager } from './manager.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ManagerService {
+  managerList: AngularFireList<any>;
+  selectedManager: Manager = new Manager();
+  constructor(private db: AngularFireDatabase) { }
+
+  getData() {
+    const managerList$ = this.db.list('/Employees', ref => ref.orderByChild('role').equalTo('Manager')).snapshotChanges();
+    return managerList$;
+  }
+
+  insertManager(manager: Manager) {
+    this.managerList.push({
+      id: manager.id,
+      name: manager.name,
+      email: manager.email,
+      mobile: manager.mobile
+    });
+  }
+
+  updateManager(manager: Manager) {
+    this.managerList.update(manager.$key,
+      { name: manager.name,
+        email: manager.email,
+        mobile: manager.mobile
+      });
+  }
+
+  deleteManager($key: string) {
+    this.managerList.remove($key);
+  }
+}

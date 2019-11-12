@@ -1,0 +1,17 @@
+export class ManagerView {
+    project: string;
+    employee: string;
+    d: Date;
+}
+
+export class EmpTimeSheets {
+    $key: string;
+    empID: string;
+    empName: string;
+    tsID: string;
+    project: string;
+    task: string;
+    duration: string;
+    approved: boolean;
+    comment: string;
+}

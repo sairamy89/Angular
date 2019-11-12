@@ -1,0 +1,11 @@
+select.empty {
+	color: grey;
+}
+select option[disabled]:first-child {
+	display: none;
+}
+
+table tr.selected {
+	background-color: darkslategray !important;
+	color: ivory;
+}

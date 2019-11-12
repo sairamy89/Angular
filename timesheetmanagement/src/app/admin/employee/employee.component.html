@@ -1,0 +1,112 @@
+<br />
+<h6 class="text-left"> Register/Edit Employee Details </h6>
+<form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.selectedEmployee.$key"/>
+  <input type="hidden" name="uid" #uid="ngModel" [(ngModel)]="employeeService.selectedEmployee.uid"/>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <input class="form-control" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name"  autocomplete="off" Placeholder="Full Name" required/>
+    </div>
+    <div class="form-group col-md-4">
+      <input class="form-control" type="email" name="email" #email="ngModel" [(ngModel)]="employeeService.selectedEmployee.email" autocomplete="off" Placeholder="Email ID" (input)="checkEmailDomain($event.target.value)" required/>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Designation:</label>
+        </div>
+        <select class="form-control empty" name="designation" #designation="ngModel" [(ngModel)]="employeeService.selectedEmployee.designation" required>
+          <option ngValue= "" selected disabled>Select</option>
+          <option *ngFor="let designation of designations" [ngValue]="designation.value">{{designation.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <input class="form-control" name="manager" #manager="ngModel" [(ngModel)]="employeeService.selectedEmployee.manager" Placeholder="Manager" required/>
+    </div>
+    <div class="form-group col-md-4">
+      <input class="form-control" name="manageremail" #manageremail="ngModel" [(ngModel)]="employeeService.selectedEmployee.manageremail" Placeholder="Manager Mail ID" required/>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Role:</label>
+        </div>
+        <select class="form-control empty" name="role" #role="ngModel" [(ngModel)]="employeeService.selectedEmployee.role" required>
+          <option ngValue= "" selected disabled>Select</option>
+          <option *ngFor="let role of roles" [ngValue]="role.value">{{role.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <input class="form-control" name="mobile" type="tel" #mobile="ngModel" [(ngModel)]="employeeService.selectedEmployee.mobile" autocomplete="off" Placeholder="Mobile" pattern="^\d{10}$" required/>
+    </div>
+    <div class="form-group col-md-2">
+      <input class="form-control" name="companyID" #companyID="ngModel" [(ngModel)]="employeeService.selectedEmployee.companyID" autocomplete="off" Placeholder="CompanyID" required/>
+    </div>
+    <div class="form-group col-md-2">
+      <input class="form-control" name="salary" #salary="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" autocomplete="off" Placeholder="Salary"/>
+    </div>
+    <div class="form-group col-md-4">
+    <button class="btn btn-default" type="submit"  [disabled]="!employeeForm.valid"><i class="fa fa-floppy-o"></i> Submit </button>&nbsp;
+    <button class="btn btn-default" type="button" (click)="onReset(employeeForm)"><i class="fa fa-repeat"></i> Reset </button>
+  </div>
+  </div>
+  <div [hidden]="!errorToggle">
+    <span style="color: red">{{emailError}}</span>
+  </div>
+  <div [hidden]="!verifiedToggle">
+    <span style="color: green">{{emailSuccess}}</span>
+  </div>
+</form>
+<br />
+<h6 class="text-center">Registered Employees</h6>
+<div class="form-group col-md-12">
+  <div class="input-group mb-0">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inlineFormInputGroup">Search:</label>
+    </div>
+    <input class="form-control" type="text" [(ngModel)]="term" />
+  </div>
+</div>
+<br />
+<div class="table-responsive-md">
+  <table class="table table-sm table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">CompanyID</th>
+          <th scope="col">Designation</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Mail_ID</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody> 
+        <tr *ngFor="let employee of employeeList | filter:term" [ngClass]="{'selected': employee.$key === isSelected}">
+          <td>{{employee.id}}</td>
+          <td>{{employee.name}}</td>
+          <td>{{employee.companyID}}</td>
+          <td>{{employee.designation}}</td>
+          <td>{{employee.mobile}}</td>
+          <td>{{employee.email}}</td>
+          <td>
+            <a class="btn" (click)="onEdit(employee)">
+              <i class="fa fa-pencil-square-o"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn" (click)="onDelete(employee.$key)">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </td>
+        </tr>
+    <tbody>
+  </table>
+</div>

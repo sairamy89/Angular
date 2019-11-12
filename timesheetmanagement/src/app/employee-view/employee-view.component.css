@@ -1,0 +1,27 @@
+select.empty {
+	color: grey;
+}
+select option[disabled]:first-child {
+	display: none;
+}
+
+table tr.selected {
+    background-color: darkslategrey !important;
+    color: ivory;
+}
+
+.form-group {
+    margin-bottom: 0%;
+}
+
+a[disabled="disabled"] {
+    pointer-events: none;
+    cursor: default;
+}
+
+a[disabled="disabledgrey"] {
+    pointer-events: none;
+    cursor: default;
+    color: darkgray;
+    background-color: whitesmoke;
+}
